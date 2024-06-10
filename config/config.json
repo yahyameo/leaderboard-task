@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "C##orcusr01",
+    "password": "admin123",
+    "database": "orcl",
+    "host": "127.0.0.1",
+    "port":1521,
+    "dialect": "oracle"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "admin",
+    "password": "developer_123",
+    "database": "ORCL",
+    "host": "ebesel-db.cz4mmssyshdj.ap-southeast-1.rds.amazonaws.com",
+    "dialect": "oracle"
+  }
+}
