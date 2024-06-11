@@ -10,8 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import { UsersModule } from './users/users.module';
-import { ThrottlerModule, ThrottlerModuleOptions } from '@nestjs/throttler';
-import { ThrottlerExceptionFilter } from './throttler-exception.filter';
+import { ThrottlerGuard, ThrottlerModule, ThrottlerModuleOptions } from '@nestjs/throttler';
 
 
 @Module({
@@ -34,7 +33,7 @@ import { ThrottlerExceptionFilter } from './throttler-exception.filter';
     },
     {
       provide: APP_FILTER,
-      useClass: ThrottlerExceptionFilter,
+      useClass: ThrottlerGuard,
     },
     JwtService,
   ],

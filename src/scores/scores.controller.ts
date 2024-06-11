@@ -5,6 +5,7 @@ import { AuthUser } from 'src/utils/auth.user';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { CreateScoreDto } from './create.score.dto';
 import { Throttle } from '@nestjs/throttler';
+import { ThrottlerBehindProxyGuard } from 'src/throttler-behind-proxy.guard';
 
 @Controller('scores')
 export class ScoresController {
@@ -13,7 +14,7 @@ export class ScoresController {
   ) {}
 
   @UseGuards(JwtAuthGuard)
-  @Throttle({ default: { limit: 3, ttl: 60000 } })
+  @UseGuards(ThrottlerBehindProxyGuard)
   @Post()
   async create(@User() user: AuthUser, @Body() dto: CreateScoreDto) {
     return this.scoresService.create(user, dto);
